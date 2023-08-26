@@ -71,7 +71,7 @@
               <input
                 type="text"
                 class="form-control"
-                id="name"
+                id="brand"
                 aria-describedby="event name"
                 placeholder="Inserisci il nome dell'evento"
                 required
@@ -88,11 +88,35 @@
                 required
               />
             </div>
+            <div class="mb-3">
+              <label for="img" class="form-label"><strong>Inserisci immagine</strong></label>
+              <input
+                type="text"
+                class="form-control"
+                id="image"
+                aria-describedby="product img"
+                placeholder="URL....."
+                required
+              />
+            </div>
 
             <div class="d-flex justify-content-between">
               <button id="create-product-btn" type="submit" class="btn btn-primary">Nuovo prodotto</button>
-              <button id="mod-product-btn" type="submit" class="btn btn-primary">Modifica prodotto</button>
-              <button id="del-product-btn" type="submit" class="btn btn-primary">Elimina prodotto</button>
+              <button type="button" id="delBtn" class="btn btn-primary bg-danger border border-none d-none">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-trash3"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"
+                  />
+                </svg>
+              </button>
+              <button id="fieldReset" class="btn btn-warning">Resetta i campi</button>
             </div>
           </form>
         </div>
@@ -103,18 +127,6 @@
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script>
-      const URL = "https://striveschool-api.herokuapp.com/api/product/";
-      document.addEventListener("DOMContentLoaded", async () => {
-        const resp = await fetch(URL, {
-          method: "GET",
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjZhOTEwYmNhMDAwMTQ1ODNmZDkiLCJpYXQiOjE2OTI5NjkxNTEsImV4cCI6MTY5NDE3ODc1MX0.kK6fMneVTM5xMHXqSPKg7rfNsst3FG7ungWxhsYpERw",
-            "Content-Type": "application/json",
-          },
-        });
-      });
-    </script>
+    <script src="BackOffice.js"></script>
   </body>
 </html>

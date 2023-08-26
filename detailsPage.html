@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CRUDAZON</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <title>DETAILS PAGE</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -15,18 +14,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <div class="align-self-start me-1">
-          <a class="icon-link" href="#">
-            <svg class="bi" aria-hidden="true">
-              <use xlink:href="#box-seam"></use>
-            </svg>
-            <i class="bi bi-bag-check-fill" style="font-size: 1.5rem"></i>
-          </a>
-        </div>
-        <div>
-          <a class="navbar-brand" href="#">CRUDAZON</a>
-        </div>
-
+        <a class="navbar-brand" href="./CRUDAZON.html">CRUDAZON</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -44,22 +32,24 @@
               <a class="nav-link active" aria-current="page" href="./CRUDAZON.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./BackOffice.html">Back-office</a>
+              <a href="./BackOffice.html" class="nav-link">Backoffice</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <div class="container">
-      <div id="product-cards" class="row mb-2">
-        <!-- Inserire dinamicamente le card-->
+    <main class="main">
+      <div class="container">
+        <h1 class="my-4">Dettagli del prodotto:</h1>
+        <div id="row" class="row"></div>
       </div>
-    </div>
+    </main>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
-    <script src="CRUDAZON.js"></script>
+    <script src="./detailsPage.js"></script>
   </body>
 </html>

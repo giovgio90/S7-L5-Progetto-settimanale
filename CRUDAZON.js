@@ -1,11 +1,12 @@
-/* {
-    name: "Samsung Galaxy S21 Ultra",
-    description: "Powerful Android smartphone with a stunning display.",
-    brand: "Samsung",
-    imageUrl: "https://www.mobhi.it/22116-large_default/Array.jpg",
-    price: 1199.99,
-  },
-  {
+const product = {
+  name: "Samsung Galaxy S21 Ultra",
+  description: "Powerful Android smartphone with a stunning display.",
+  brand: "Samsung",
+  imageUrl: "https://www.mobhi.it/22116-large_default/Array.jpg",
+  price: 1199.99,
+};
+
+/*{
     name: "Google Pixel 6 Pro",
     description: "High-quality camera phone with pure Android experience.",
     brand: "Google",
@@ -31,7 +32,7 @@
     description: "Sony's flagship with 4K display and advanced camera tech.",
     brand: "Sony",
     imageUrl:
-      "https://ae01.alicdn.com/kf/S22681f28b9b240fd830432b7df5cb5e6o/Sony-Xperia-1-iii-5G-XQ-BC72-256GB-512GB-telefono-cellulare-originale-6-5-Snapdragon-888.jpg",
+      "https://bresciapc.com/wp-content/uploads/2021/07/Sony-Xperia-1-III.jpg",
     price: 1099.99,
   },
   {
@@ -78,56 +79,46 @@
   },
 ];*/
 
-window.onload = async () => {
-  async function createProduct(productData) {
-    try {
-      const resp = await fetch("https://striveschool-api.herokuapp.com/api/product/", {
-        method: "GET",
-        body: JSON.stringify(productData),
-        headers: {
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU4NjZhOTEwYmNhMDAwMTQ1ODNmZDkiLCJpYXQiOjE2OTI5NjkxNTEsImV4cCI6MTY5NDE3ODc1MX0.kK6fMneVTM5xMHXqSPKg7rfNsst3FG7ungWxhsYpERw",
-          "Content-Type": "application/json",
-        },
-      });
+const URL = "https://striveschool-api.herokuapp.com/api/product/";
 
-      if (resp.ok) {
-        const newProduct = await resp.json();
-        console.log("Nuovo prodotto creato:", newProduct);
+const getData = async () => {
+  try {
+    const resp = await fetch(URL, {
+      headers: {
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGU5ZTQ1ODUxNWY0MTAwMTQ2OTc5MWMiLCJpYXQiOjE2OTMwNDk5NTgsImV4cCI6MTY5NDI1OTU1OH0.3dn8Qx5W5mpbERlS5KTRyPedQL4ggcKrdKomjtisLIk",
+      },
+    });
 
-        // Creazione della card e inserimento nell'HTML
-        const productCardsContainer = document.getElementById("product-cards");
-        const card = createCard(newProduct);
-        productCardsContainer.appendChild(card);
-      } else {
-        console.error("Errore durante la creazione del prodotto:", resp.statusText);
-      }
-    } catch (error) {
-      console.error("Errore:", error);
-    }
-  }
+    const products = await resp.json();
+    console.log(products);
 
-  // ... (il codice successivo rimane invariato)
+    const row = document.getElementById("product-cards");
+    row.innerText = "";
 
-  function createCard(productData) {
-    const card = document.createElement("div");
-    card.classList.add("col-md-4");
+    products.forEach((product) => {
+      const col = document.createElement("div");
+      col.className = "col-3 g-3";
 
-    card.innerHTML = `
-      <div class="card">
-        <img src="${productData.imageUrl}" class="card-img-top" alt="${productData.name}">
-        <div class="card-body">
-          <h5 class="card-title">${productData.name}</h5>
-          <p class="card-text">${productData.description}</p>
-          <p class="card-text">Brand: ${productData.brand}</p>
-          <p class="card-text">Price: $${productData.price.toFixed(2)}</p>
-        </div>
+      col.innerHTML = `
+      <div class="card h-100">
+      <img src="${product.imageUrl}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="name card-title">${product.name}</h5>
+        <p class="description card-text">${product.description}</p>
+        <p class="brand card-text fst-italic fw-medium">${product.brand}</p>
+        <p class="price card-text mt-auto ">${product.price}€</p>
+        
+        <a href="./detailsPage.html?productId=${product._id}" class="btn btn-info ">Scopri di più</a>
+        <a href="./BackOffice.html?productId=${product._id}" class="btn btn-success ">Modifica ora</a>
+        
       </div>
-    `;
+      </div>`;
 
-    return card;
+      row.appendChild(col);
+    });
+  } catch (error) {
+    console.log(error);
   }
-
-  // Carica i prodotti quando la pagina è pronta
-  document.addEventListener("DOMContentLoaded", loadProducts);
 };
+getData();
