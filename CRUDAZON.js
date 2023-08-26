@@ -98,11 +98,11 @@ const getData = async () => {
 
     products.forEach((product) => {
       const col = document.createElement("div");
-      col.className = "col-3 g-3";
+      col.className = "col-sm-12 col-md-4 col-lg-3 g-3";
 
       col.innerHTML = `
-      <div class="card h-100">
-      <img src="${product.imageUrl}" class="card-img-top">
+      <div class="card">
+      <img src="${product.imageUrl}" class="card-img-top pt-2">
       <div class="card-body">
         <h5 class="name card-title">${product.name}</h5>
         <p class="description card-text">${product.description}</p>
